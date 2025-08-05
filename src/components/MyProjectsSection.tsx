@@ -8,7 +8,23 @@ interface MyProjectsSectionProps {
 }
 
 export default function MyProjectsSection({ images }: MyProjectsSectionProps) {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<{
+    title: string;
+    tag: { text: string; color: string } | null;
+    year: string;
+    category: string;
+    description: string;
+    cast: string;
+    location: string;
+    challenge: string;
+    details?: {
+      expertise: string;
+      role: string;
+      timeline: string;
+      team: string;
+      tools: string;
+    };
+  } | null>(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   const imageTitles: Record<string, string> = {
@@ -20,7 +36,7 @@ export default function MyProjectsSection({ images }: MyProjectsSectionProps) {
     "prufinancialassessment.png": "Prudential Financial Wellness Assessment",
     "ncrmarketplace.png": "NCR Marketplace",
     "jukedeck.png": "Jukedeck",
-    "Sweepr.png": "Sweepr",
+    "Sweepr.png": "Creating a design system for Sweepr",
     "coachme.png": "Creating a Fitness App (Coachme)"
   };
 

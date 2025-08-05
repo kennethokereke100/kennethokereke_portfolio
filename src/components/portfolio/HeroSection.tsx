@@ -26,17 +26,15 @@ export default function HeroSection({ title, subtitle, description }: HeroSectio
     currentType = "uiuxdesign";
   }
 
-  // Video mapping for each portfolio type
+  // Video mapping for each portfolio type - only existing files
   const videoMap = {
     uiuxdesign: [
-      "/videos/uiuxdesign/amusementpark.mp4",
       "/videos/uiuxdesign/financial.mp4",
       "/videos/uiuxdesign/track.mp4",
       "/videos/uiuxdesign/walmartvid.mp4"
     ],
     webdevelopment: [
       "/videos/webdevelopment/explosion.mp4",
-      "/videos/webdevelopment/maps.mp4",
       "/videos/webdevelopment/money.mp4"
     ],
     mobiledevelopment: [
@@ -69,6 +67,12 @@ export default function HeroSection({ title, subtitle, description }: HeroSectio
       });
     }
   };
+
+  useEffect(() => {
+    // Initialize with random video index
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    setCurrentVideoIndex(randomIndex);
+  }, [videos.length]);
 
   useEffect(() => {
     if (videoRef.current) {
